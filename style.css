@@ -1,3 +1,26 @@
+:root .light {
+  --color-darkCyan: #5ba4a4;
+  --color-verydarkCyan: #2c3a3a;
+  --color-lightgrayCyan1: #effafa;
+  --color-lightgrayCyan2: #eef6f6;
+  --color-grayCyan: #7b8e8e;
+  --color-headBg: #63bbbb;
+  --color-headBgImg: #5ba4a4;
+  --color-button: #ebf5f5;
+}
+:root .dark {
+  --color-darkCyan: #a8439f;
+  --color-verydarkCyan: #3a2c39;
+  --color-lightgrayCyan1: #401c40;
+  --color-lightgrayCyan2: #573357;
+  --color-grayCyan: #8e7b8d;
+  --color-headBg: #2b0821;
+  --color-headBgImg: #522e47;
+  --color-button: #f5ebf4;
+}
+
+
+
 *{
     padding: 0;
     margin: 0;
@@ -315,7 +338,7 @@
     transform-origin: 0 50%;
   }
 
-/*  */
+/* filter box*/
 .filter-list-box, .job-tag-box .job-tag {
   background: var(--color-button);
   border-radius: 5px;
@@ -345,3 +368,16 @@
   transition: background-color 0.2s ease;
 }
 
+/* job-tag */
+
+}
+ .job-tag {
+  transition: all 0.2s ease;
+}
+ .job-tag:hover {
+  background: var(--color-darkCyan);
+}
+ .job-tag:hover p {
+  color: white;
+  transition: all 0.2s ease;
+}
