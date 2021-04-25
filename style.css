@@ -1,0 +1,347 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.searchBar{
+    overflow: hidden;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 50%;
+}
+
+.search{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 1rem 2rem;
+    outline: none;
+    box-shadow: inset;
+}
+
+
+.lists{
+    max-width: 42rem;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    height: 60px;
+    border-radius: 1rem;
+    margin: 1.5rem;
+    margin-bottom: 2.5rem;
+
+}
+
+.container-list{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    margin: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-height: 18rem;
+}
+
+.image-card{
+   flex-shrink: 0;
+ 
+   width: 100%;
+   background-position: bottom;
+   object-fit: none;
+   border-width: 1px;
+}
+
+.image-card img{
+    height: 18rem;
+    width: 100%;
+    background-position: bottom;
+    width: 12rem;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;   
+}
+.title{
+    display: flex;
+    text-align: left;
+    margin-top: 1rem;
+    font-size: 16px;
+}
+
+/*hashtags */
+
+  
+.hashtags{
+    display: flex;
+    padding-right: 10px;
+    font-size: 16px;
+    justify-content: left;
+    align-items: center;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+}
+.hashtags h5{
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.tag p{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15%;
+    font-size: 14px;
+}
+
+/* images gallery */
+.images-slide{
+    -ms-grid-row-span: 1;
+    column-span: 2;
+}
+.slide{
+    height: 5rem;
+    display: grid;
+    grid-row: 1;
+    position: cover;
+    grid-auto-flow: column;
+    gap: 4;
+    place-self: auto;
+}
+
+.slide img{
+  height: 4rem;
+  display: flex;
+  position: cover;
+  border-radius: 10px;
+  align-items: center;
+  width: 7rem
+}
+
+
+
+/*descriptiotn & read more button */
+#module {
+    font-size: 14px;
+    line-height: 1.7;
+    text-decoration: none;
+  }
+  #module p{
+     text-decoration: none;
+    list-style: none;
+  }
+  #module #collapseId.collapse:not(.show) {
+    display: block;
+    height: 3rem;
+   
+    overflow: hidden;
+  }
+  
+  #module #collapseId.collapsing {
+    height: 3rem;
+  }
+  
+  #module a.collapsed::after {
+    content: 'Read More';
+  }
+  
+  
+ 
+  
+/* hashtags */
+
+  #dots {
+    font-size: 14px;
+    line-height: 3rem;
+     display: flex;
+     text-decoration: none;
+    justify-content: center;
+    align-items: center;
+  }
+  #dots #collapseTag.collapse_:not(.show) {
+    display: flex;
+    height: 2rem;
+    text-decoration: none;
+    overflow: hidden;
+    justify-content: center;
+    align-items: left;
+  }
+  
+  #dots #collapseTag.collapsing {
+    height: 2rem;
+  }
+
+  
+  #dots a.collapseDot::after {
+    content: '...';
+  }
+  
+  #dots a:not(.collapseDot)::after {
+    content: 'show less';
+  }
+
+
+  /*tabs*/
+  
+  .collapse_ {
+       width: 100%;
+        justify-content: flex-start;
+        flex: 0 1 100%;
+        flex-wrap: wrap;
+  }
+  
+  
+  
+  .tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(180, 31%, 95%);
+    margin: 3px 8px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .tabs button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(91, 167, 167);
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    color: #fff;
+    transition: 0.3s ease background-color;
+  }
+  .tabs button img {
+    transform: scale(0.8);
+  }
+  .tabs p {
+    font-size: 11px;
+    padding: 5px;
+    font-weight: 700;
+    color: hsl(180, 29%, 50%);
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+  }
+  .tabs button:hover {
+    background-color: hsl(180, 14%, 20%);
+  }
+
+
+  .tabs .ion-icon {
+    font-weight: 700;
+  }
+  .tabs .cancel {
+    height: 1.5px;
+    width: 12px;
+    background-color: #fff;
+    display: flex;
+    transform: rotate(45deg);
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+  .tabs .cancel::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    transform: rotate(-90deg);
+  }
+  
+
+
+
+
+  /* lastest hashatgs */
+
+  .searchTag{
+    transform: translateY(-3.5rem) scaleY(0);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    background: white;
+    min-height: 74px;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(55, 141, 128, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .filter-lists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+
+  /* clear button */
+  .filter-clear {
+    cursor: pointer;
+    position: relative;
+  }
+  .filter-clear::after {
+    content: "";
+    position: absolute;
+    transform: scaleX(0);
+    left: 0;
+    transform-origin: 0 50%;
+    background: var(--color-darkCyan);
+    height: 2px;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+  .filter-clear:hover::after {
+    transform: scaleX(1);
+    transform-origin: 0 50%;
+  }
+
+/*  */
+.filter-list-box, .job-tag-box .job-tag {
+  background: var(--color-button);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0.8rem 0.8rem;
+  position: relative;
+  cursor: pointer;
+}
+.filter-list-box:hover .filter-remove-icon, .job-tag-box .job-tag:hover .filter-remove-icon {
+  background: var(--color-verydarkCyan);
+}
+.filter-list-box .filter-tag, .job-tag-box .job-tag .filter-tag {
+  margin-right: 3.2rem;
+}
+.filter-list-box .filter-remove-icon, .job-tag-box .job-tag .filter-remove-icon {
+  pointer-events: none;
+  background: var(--color-darkCyan);
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.2s ease;
+}
+
