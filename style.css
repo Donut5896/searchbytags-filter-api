@@ -137,7 +137,7 @@
 }
 
 .txt{
-  width: 15%;
+
 }
 
 /* images gallery */
@@ -208,22 +208,26 @@
  
   
 /* hashtags */
-
+.txt{
+  display: flex;
+  width: auto;
+  flex-wrap: nowrap;
+}
   #dots {
     font-size: 14px;
-    line-height: 3rem;
+     flex-wrap: nowrap;
      display: flex;
+     height: 1rem;
      text-decoration: none;
     justify-content: center;
     align-items: center;
   }
   #dots #collapseTag.collapse_:not(.show) {
     display: flex;
-    height: 2rem;
     text-decoration: none;
     overflow: hidden;
     justify-content: center;
-    align-items: left;
+    align-items:center;
   }
   
   #dots #collapseTag.collapsing {
@@ -240,12 +244,7 @@
   }
 
 
-  .collapse_ {
-       width: 100%;
-        justify-content: flex-start;
-        flex: 0 1 100%;
-        flex-wrap: wrap;
-  }
+ 
   
     /*tabs*/
   .tabs {

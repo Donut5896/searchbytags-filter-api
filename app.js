@@ -117,12 +117,12 @@ const showTrips = (trips) => {
                                     <h5>หมวดหมู่: </h5>
                                    <div id="dots">
 
-                                    <span class="collapse_" id="collapseTag" aria-expanded="false">
+                                    <span class="collapse_" id="collapseTag">
                                     ${trip.tags.map(tag => {
                                         return `<div class="job-tag" data-value="${tag}"><p class="txt">${tag}<p></div>`
                                     })}
                                     </span>
-                                    <a role="button" class="collapseDot" data-toggle="collapse" href="${trip.url}" aria-expanded="false"> 
+                                    <a role="button" class="collapseDot" data-toggle="collapse" data-mdb-target="#collapseTag" aria-expanded="false" aria-controls="collapseTag"> 
                                     </div>
                             </a>
                         </div>
