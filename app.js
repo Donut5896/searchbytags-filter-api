@@ -104,7 +104,7 @@ const showTrips = (trips) => {
                 <div class="contents">
                     <div class="content">
                         <div class="title">
-                            <h2>${trip.title}</h2>
+                            <a href="${trip.title}"><h2>${trip.title}</h2><a>
                         </div>
                
                         <div class="description" id="module">
@@ -113,21 +113,14 @@ const showTrips = (trips) => {
                             </a>
                         </div>
 
-                        <div class="hashtags" >
-                                    <h5>หมวดหมู่: </h5>
-                                   <div id="dots">
-
-                                    <span class="collapse_" id="collapseTag">
-                                    ${trip.tags.map(tag => {
-                                        return `<div class="job-tag" data-value="${tag}"><p class="txt">${tag}<p></div>`
-                                    })}
-                                    </span>
-                                    <a role="button" class="collapseDot" data-toggle="collapse" data-mdb-target="#collapseTag" aria-expanded="false" aria-controls="collapseTag"> 
-                                    </div>
-                            </a>
+                        <div class="job-tag-box" >
+                            <h5>หมวดหมู่: </h5>
+                            <div id="dots">
+                                ${trip.tags.map(tag => {
+                                return `<div class="job-tag" data-value="${tag}"><p>${tag}<p></div>`
+                                }).join(',')}
+                            </div>
                         </div>
-
-                     
                     </div> 
                 </div>
                  
@@ -141,8 +134,8 @@ const showTrips = (trips) => {
 //create tag on filter bar
 const createFilterBox = (tag) => {
     document.querySelector('.filter-lists').insertAdjacentHTML("beforeend", `
-        <div class="filter-list-box"  data-value="${tag}">
-            <div class="tabs">
+        <div class="filter-list-box "  data-value="${tag}">
+            <div class="filter-tag">
                 <p>${tag}</p>
             </div>
             <div class="filter-remove-icon">
@@ -186,12 +179,14 @@ function clearAll(){
 }
 
 
+
+
 //storage
 let store = [];
 
 //job list bar
 window.addEventListener('click', (e) => {
-    const jobTagGroup = document.querySelectorAll('.hashtags');
+    const jobTagGroup = document.querySelectorAll('.job-tag-box');
     const filterTags = e.target.closest('.filter-list-box');
     const tagText = e.target.textContent.trim()
 
@@ -217,7 +212,7 @@ window.addEventListener('click', (e) => {
         const storeIndex = store.indexOf(filterTags.childNodes[1].textContent)
         store.splice(storeIndex, 1)
         
-        console.log(storeIndex)
+
     }
   
 
@@ -228,7 +223,7 @@ window.addEventListener('click', (e) => {
 
         //convert tags list into readable string arrays
         const tagArrays = index.textContent.replace(/\s+/g, ' ').trim().split(',');
-        console.log(index)
+
         //store can be found on the first 'if condition' inside eventListener
         if(store.every(each => tagArrays.includes(each))){
             jobListingContainer.classList.add('marked');
