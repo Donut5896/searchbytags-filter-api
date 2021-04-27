@@ -160,7 +160,7 @@ const removefilterBox = (tag) => {
 
 //open and close effect
 function openFilterbox(){
-    document.querySelector('.filter-wrapper').style.transform= "translateY(-3.5rem) scaleY(1)"
+    document.querySelector('.filter-wrapper').style.transform= "translateY(1rem) scaleY(1)"
 }
 function closeFilterbox(){
     document.querySelector('.filter-wrapper').style.transform = "translateY(-3.5rem) scaleY(0)"
