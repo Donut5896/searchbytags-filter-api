@@ -1,6 +1,6 @@
 const items = document.querySelector(".lists");
 const searchBar = document.querySelector(".searchBar");
-
+const container = document.querySelector(".container");
 
 let  searchTrips = [];
 
@@ -134,7 +134,7 @@ const showTrips = (trips) => {
 //create tag on filter bar
 const createFilterBox = (tag) => {
     document.querySelector('.filter-lists').insertAdjacentHTML("beforeend", `
-        <div class="filter-list-box "  data-value="${tag}">
+        <div class="filter-list-box"  data-value="${tag}">
             <div class="filter-tag">
                 <p>${tag}</p>
             </div>
@@ -180,7 +180,6 @@ function clearAll(){
 
 
 
-
 //storage
 let store = [];
 
@@ -202,7 +201,7 @@ window.addEventListener('click', (e) => {
         }else{
             removefilterBox(tagText);
             const storeIndex = store.indexOf(tagText)
-            store.splice(storeIndex, 1)
+            store.splice(storeIndex,1)
         }
     }
 
@@ -210,7 +209,7 @@ window.addEventListener('click', (e) => {
     if(filterTags){
         removefilterBox((filterTags.childNodes[1]).textContent);
         const storeIndex = store.indexOf(filterTags.childNodes[1].textContent)
-        store.splice(storeIndex, 1)
+        store.splice(storeIndex,1)
         
 
     }
@@ -255,6 +254,7 @@ window.addEventListener('click', (e) => {
         clearAll();
         closeFilterbox();
     }
+    
 
 })
 
