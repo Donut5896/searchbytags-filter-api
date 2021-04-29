@@ -50,32 +50,15 @@ searchBar.addEventListener("keyup", e => {
 const loadTrips = async() => {
     try{
         const res = await fetch("https://trips-api-gateway.herokuapp.com/trips");
-        
         searchTrips = await res.json();
-       
         showTrips(searchTrips);
-
- 
-
     }catch(err){
         console.log(err);
     }
-
- 
-
-
 };
 
 
 
-
-
-
-
-
- /*<div class="image-card">
-                        <img src="${trip.photos[0]}" alt="" />
-                 </div*/
 
 
 
@@ -87,45 +70,43 @@ const showTrips = (trips) => {
     let tripListingHTML =  trips.map(trip => {
 
         return (
-         items.insertAdjacentHTML('beforeend', ` 
-            <div class="container-list" id="${trip.eid}">
+        container.insertAdjacentHTML('beforeend', ` 
+        <div  class="lists" id="lists" id="${trip.eid}> 
+            <div class="container-list">
 
-                   <div class="images-slide">
-                            <div class="slide">
-                                ${trip.photos.map(photo => {
-                                    return `<img src="${photo}" />
-                                  `
-                                }).join('')}
+                <div class="images-slide">
+                    <div class="slide">
+                            ${trip.photos.map(photo => {
+                             return `<img src="${photo}" />
+                            `
+                            }).join('')}
                                
-                            </div>  
-                      
-        
-
-                <div class="contents">
-                    <div class="content">
-                        <div class="title">
-                            <a href="${trip.title}"><h2>${trip.title}</h2><a>
-                        </div>
-               
-                        <div class="description" id="module">
-                            <p class="collapse" id="collapseId" aria-expanded="false">${trip.description}</p>
-                            <a role="button" class="collapsed" data-toggle="collapse" href="${trip.url}" aria-expanded="false"> 
-                            </a>
-                        </div>
-
-                        <div class="job-tag-box" >
-                            <h5>หมวดหมู่: </h5>
-                            <div id="dots">
-                                ${trip.tags.map(tag => {
-                                return `<div class="job-tag" data-value="${tag}"><p>${tag}<p></div>`
-                                }).join(',')}
+                    </div>  
+                    <div class="contents">
+                        <div class="content">
+                            <div class="title">
+                                <a href="${trip.title}"><h2>${trip.title}</h2><a>
                             </div>
-                        </div>
-                    </div> 
-                </div>
-                 
-            </div>     
-                 </div>`)
+                
+                            <div class="description" id="module">
+                                <p class="collapse" id="collapseId" aria-expanded="false">${trip.description}</p>
+                                <a role="button" class="collapsed" data-toggle="collapse" href="${trip.url}" aria-expanded="false"> 
+                                </a>
+                            </div>
+
+                            <div class="job-tag-box" >
+                                <h5>หมวดหมู่: </h5>
+                                <div id="dots">
+                                    ${trip.tags.map(tag => {
+                                    return `<div class="job-tag" data-value="${tag}"><p>${tag}<p></div>`
+                                    }).join(',')}
+                                </div>
+                            </div>
+                        </div> 
+                    </div>  
+                </div>     
+            </div>
+        </div>`)
     )}).join('')
 
 };
@@ -139,21 +120,31 @@ const createFilterBox = (tag) => {
                 <p>${tag}</p>
             </div>
             <div class="filter-remove-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-                <path fill="#fff" fill-rule="evenodd" d="M11.314 0l2.121 2.121-4.596 4.596 4.596 4.597-2.121 2.121-4.597-4.596-4.596 4.596L0 11.314l4.596-4.597L0 2.121 2.121 0l4.596 4.596L11.314 0z"/>
-                </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
            
         </div>
 
     `)
+    const removeButton = document.querySelector(".filter-remove-icon")
+    console.log(removeButton)
+
 }
+
+
+
+
+
+
 
 //remove tag from filter bar
 const removefilterBox = (tag) => {
      document.querySelectorAll('filter-list-box').forEach(index => {
+         console.log(index)
          if(index.getAttribute('data-value') == tag) index.remove();
+         
      })
+     console.log(tag)
 }
 
 
@@ -172,9 +163,9 @@ function closeFilterbox(){
 
 //clear all
 function clearAll(){
-    document.querySelectorAll('.container-list')
+    document.querySelectorAll('.lists')
         .forEach(index => index.classList.remove('marked'));
-    document.querySelectorAll('.container-list')
+    document.querySelectorAll('.lists')
         .forEach(index => index.style.display = 'flex');
 }
 
@@ -189,39 +180,39 @@ window.addEventListener('click', (e) => {
     const filterTags = e.target.closest('.filter-list-box');
     const tagText = e.target.textContent.trim()
 
-    console.log(jobTagGroup)
-    console.log(filterTags)
-    console.log(tagText)
+
     //push tag to storage, which is filter list
     if(e.target.closest('.job-tag')){
         openFilterbox();
+        //if the value to search for never occurs
         if(store.indexOf(tagText) == -1){
             createFilterBox(tagText)
             store.push(tagText)
         }else{
             removefilterBox(tagText);
             const storeIndex = store.indexOf(tagText)
-            store.splice(storeIndex,1)
+            store.splice(storeIndex,0)
         }
     }
-
+console.log(store)
     //tag removal forfilter box
     if(filterTags){
         removefilterBox((filterTags.childNodes[1]).textContent);
         const storeIndex = store.indexOf(filterTags.childNodes[1].textContent)
         store.splice(storeIndex,1)
-        
+      
+        console.log(storeIndex)
 
     }
   
 
     //joblist display controller
     jobTagGroup.forEach(index => {
-        const jobListingContainer = index.closest('.container-list')
+        const jobListingContainer = index.closest('.lists')
         jobListingContainer.style.display = "none";
 
         //convert tags list into readable string arrays
-        const tagArrays = index.textContent.replace(/\s+/g, ' ').trim().split(',');
+        const tagArrays = index.textContent.replace(/\s+/g, ',').trim().split(',');
 
         //store can be found on the first 'if condition' inside eventListener
         if(store.every(each => tagArrays.includes(each))){
@@ -231,9 +222,7 @@ window.addEventListener('click', (e) => {
         }else{
             jobListingContainer.classList.remove('marked')
         }
-        console.log(jobListingContainer)
-        console.log(tagArrays)
-        
+  
     });
 
 
@@ -246,7 +235,7 @@ window.addEventListener('click', (e) => {
             store = [];
             clearAll();
         }
-        console.log(filterLists)
+    
     }
 
     //check if filter box is empty
