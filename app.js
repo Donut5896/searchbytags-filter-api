@@ -77,7 +77,7 @@ const showTrips = (trips) => {
                 <div class="images-slide">
                     <div class="slide">
                             ${trip.photos.map(photo => {
-                             return `<img src="${photo}" />
+                             return `<img src=${photo} alt="photo"/>
                             `
                             }).join('')}
                                
@@ -126,9 +126,7 @@ const createFilterBox = (tag) => {
         </div>
 
     `)
-    const removeButton = document.querySelector(".filter-remove-icon")
-    console.log(removeButton)
-
+    
 }
 
 
@@ -151,7 +149,7 @@ const removefilterBox = (tag) => {
 
 //open and close effect
 function openFilterbox(){
-    document.querySelector('.filter-wrapper').style.transform= "translateY(1rem) scaleY(1)"
+    document.querySelector('.filter-wrapper').style.transform= "translateY(-3.5rem) scaleY(1)"
 }
 function closeFilterbox(){
     document.querySelector('.filter-wrapper').style.transform = "translateY(-3.5rem) scaleY(0)"
@@ -170,6 +168,18 @@ function clearAll(){
 }
 
 
+//color theme switch
+function colorThemeChanger(){
+    if(body.classList == 'light'){
+        body.classList.remove('light')
+        body.classList.add('dark')
+        document.querySelector('.head-container').style.backgroundImage  = "url(./images/bg-header-desktop2.png)"
+    } else {
+        body.classList.remove('dark')
+        body.classList.add('light')
+        document.querySelector('.head-container').style.backgroundImage  = "url(./images/bg-header-desktop.png)"
+    }
+}
 
 //storage
 let store = [];
@@ -181,27 +191,32 @@ window.addEventListener('click', (e) => {
     const tagText = e.target.textContent.trim()
 
 
+
+
+
     //push tag to storage, which is filter list
     if(e.target.closest('.job-tag')){
         openFilterbox();
-        //if the value to search for never occurs
+        //if the value to search for is never occurs return -1
         if(store.indexOf(tagText) == -1){
             createFilterBox(tagText)
             store.push(tagText)
         }else{
             removefilterBox(tagText);
             const storeIndex = store.indexOf(tagText)
-            store.splice(storeIndex,0)
+            store.splice(storeIndex,1)
+
         }
+   
+       
     }
-console.log(store)
+
     //tag removal forfilter box
     if(filterTags){
         removefilterBox((filterTags.childNodes[1]).textContent);
         const storeIndex = store.indexOf(filterTags.childNodes[1].textContent)
         store.splice(storeIndex,1)
-      
-        console.log(storeIndex)
+    
 
     }
   
@@ -244,7 +259,10 @@ console.log(store)
         closeFilterbox();
     }
     
-
+   //color theme changer
+   if(e.target.classList[0] == 'color-switcher'){        
+    colorThemeChanger();
+    }
 })
 
 

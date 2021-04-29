@@ -1,4 +1,4 @@
-:root {
+:root .light {
   --color-darkCyan: #5ba4a4;
   --color-verydarkCyan: #2c3a3a;
   --color-lightgrayCyan1: #effafa;
@@ -8,10 +8,28 @@
   --color-headBgImg: #5ba4a4;
   --color-button: #ebf5f5;
 }
-
+:root .dark {
+  --color-darkCyan: #a8439f;
+  --color-verydarkCyan: #3a2c39;
+  --color-lightgrayCyan1: #401c40;
+  --color-lightgrayCyan2: #573357;
+  --color-grayCyan: #8e7b8d;
+  --color-headBg: #2b0821;
+  --color-headBgImg: #522e47;
+  --color-button: #f5ebf4;
+}
+html {
+  font-size: 90%;
+}
+html a, html li {
+  text-decoration: none;
+  list-style: none;
+}
 
 body {
   min-height: 100vh;
+  font-size: 1.5rem;
+  background-color: var(--color-lightgrayCyan1);
   transition: background-color 0.3s ease;
   font-family: "Spartan", sans-serif;
 }
@@ -27,17 +45,194 @@ p {
   font-weight: 700;
   color: var(--color-darkCyan);
 }
-
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+main {
+  display: flex;
+  justify-content: center;
+}
+header {
+  display: flex;
+  justify-content: center;
+  background: var(--color-headBg);
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.3);
 }
 
 h2{
   font-size: 22px;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@-webkit-keyframes wobble-hor-bottom {
+  0%, 100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateX(-6px) rotate(-6deg);
+  }
+  30% {
+    transform: translateX(4px) rotate(6deg);
+  }
+  45% {
+    transform: translateX(-4px) rotate(-3.6deg);
+  }
+  60% {
+    transform: translateX(3px) rotate(2.4deg);
+  }
+  75% {
+    transform: translateX(-1px) rotate(-1.2deg);
+  }
+}
+@keyframes wobble-hor-bottom {
+  0%, 100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateX(-6px) rotate(-6deg);
+  }
+  30% {
+    transform: translateX(4px) rotate(6deg);
+  }
+  45% {
+    transform: translateX(-4px) rotate(-3.6deg);
+  }
+  60% {
+    transform: translateX(3px) rotate(2.4deg);
+  }
+  75% {
+    transform: translateX(-1px) rotate(-1.2deg);
+  }
+}
+@-webkit-keyframes rotate45deg {
+  40% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes rotate45deg {
+  40% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(10deg);
+  }
+}
+/* color swither */
+
+
+.head-container {
+  padding: 0 16.5rem;
+  max-width: 1440px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 15.6rem;
+  transition: background-color 0.3s ease-in-out;
+  background: var(--color-headBgImg) url(./images/bg-header-desktop.png) no-repeat center/cover;
+}
+
+.head-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.head-wrapper .color-switch-box {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  cursor: pointer;
+  border-radius: 100%;
+  -webkit-animation: rotate 10s linear infinite both;
+          animation: rotate 10s linear infinite both;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  transition: all 0.3s ease;
+  filter: brightness(1.3) blur(0.1rem);
+}
+.head-wrapper .color-switch-box:hover {
+  -webkit-animation: rotate 0.5s linear infinite both;
+          animation: rotate 0.5s linear infinite both;
+  filter: brightness(1.7) blur(0.3rem);
+  transition: all 0.3s ease;
+}
+.head-wrapper .color-switch-box .color-switcher {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background: url(../images/color-wheel.png) no-repeat center center;
+  background-size: 300%;
+  box-shadow: 0 0 20px rgba(214, 214, 214, 0.4);
 }
 /* 
 .searchBar{
@@ -56,6 +251,16 @@ h2{
     outline: none;
     box-shadow: inset;
 } */
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ 
+ 
+}
+
 .filter-wrapper {
   transform: translateY(-3.5rem) scaleY(0);
   width: 100%;
@@ -77,12 +282,41 @@ h2{
   gap: 1.5rem;
 }
 
+.filter-list-box, .job-tag-box .job-tag {
+  background: var(--color-button);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+.filter-list-box:hover .filter-remove-icon, .job-tag-box .job-tag:hover .filter-remove-icon {
+  background: var(--color-verydarkCyan);
+}
+.filter-list-box .filter-tag, .job-tag-box .job-tag .filter-tag {
+  margin-right: 3.2rem;
+}
+.filter-list-box .filter-remove-icon, .job-tag-box .job-tag .filter-remove-icon {
+  pointer-events: none;
+  background: var(--color-darkCyan);
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.2s ease;
+}
+
   /* clear button */
-  .filter-clear {
-    cursor: pointer;
-    position: relative;
-  }
-  .filter-clear::after {
+.filter-clear {
+  cursor: pointer;
+  position: relative;
+}
+.filter-clear::after {
     content: "";
     position: absolute;
     transform: scaleX(0);
@@ -92,19 +326,20 @@ h2{
     height: 2px;
     width: 100%;
     transition: all 0.2s ease;
-  }
-  .filter-clear:hover::after {
+}
+.filter-clear:hover::after {
     transform: scaleX(1);
     transform-origin: 0 50%;
-  }
+}
 
 
-
+/* begin trip card */
 
 .lists{
-  
-    max-width: 45rem;
     width: 100%;
+    max-width: 45rem;
+    flex-wrap: wrap;
+    align-items: center;
     height: 90%;
     border-radius: 1rem;
     margin: 1.5rem;
@@ -124,7 +359,7 @@ h2{
 }
 
 
-/* trip card */
+/* card image  */
 
 .image-card{
    flex-shrink: 0;
@@ -163,12 +398,6 @@ h2{
     font-size: 16px;
     width: 100%;
 }
-
-
-
-  
-
-
 
 
 /* images gallery */
@@ -303,7 +532,7 @@ h2{
   .tabs .ion-icon {
     font-weight: 700;
   }
-  .tabs .cancel {
+ .cancel {
     height: 1.5px;
     width: 20px;
     background-color: #fff;
@@ -313,7 +542,7 @@ h2{
     align-items: center;
     justify-content: center;
   }
-  .tabs .cancel::after {
+ .cancel::after {
     content: "";
     width: 20px;
     height: 100%;
@@ -326,37 +555,8 @@ h2{
 
 
 
-/* filter box*/
-.filter-list-box, .job-tag-box .job-tag {
-  background: var(--color-button);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  padding: 0.2rem;
-}
-.filter-list-box:hover .filter-remove-icon, .job-tag-box .job-tag:hover .filter-remove-icon {
-  background: var(--color-verydarkCyan);
-}
-.filter-list-box .filter-tag, .job-tag-box .job-tag .filter-tag {
-  margin-right: 3.2rem;
-}
-.filter-list-box .filter-remove-icon, .job-tag-box .job-tag .filter-remove-icon {
-  pointer-events: none;
-  background: var(--color-darkCyan);
-  position: absolute;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 100%;
-  border-radius: 0 5px 5px 0;
-  transition: background-color 0.2s ease;
-}
 
-/* job-tag */
+/* hashtag */
 
 
 .job-tag-box {
