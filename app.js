@@ -96,7 +96,7 @@ const showTrips = (trips) => {
 
                             <div class="job-tag-box" >
                                 <h5>หมวดหมู่: </h5>
-                                <div id="dots">
+                                <div id="dots" >
                                     ${trip.tags.map(tag => {
                                     return `<div class="job-tag" data-value="${tag}"><p>${tag}<p></div>`
                                     }).join(',')}
@@ -116,8 +116,8 @@ const showTrips = (trips) => {
 const createFilterBox = (tag) => {
     document.querySelector('.filter-lists').insertAdjacentHTML("beforeend", `
         <div class="filter-list-box"  data-value="${tag}">
-            <div class="filter-tag">
-                <p>${tag}</p>
+            <div class="filter-tag" >
+                <p >${tag}</p>
             </div>
             <div class="filter-remove-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -137,9 +137,12 @@ const createFilterBox = (tag) => {
 
 //remove tag from filter bar
 const removefilterBox = (tag) => {
-     document.querySelectorAll('filter-list-box').forEach(index => {
-         console.log(index)
-         if(index.getAttribute('data-value') == tag) index.remove();
+     document.querySelectorAll('.filter-list-box').forEach(index => {
+         
+         if(index.getAttribute('data-value') == tag) {
+              index.remove();
+         }
+        
          
      })
      console.log(tag)
@@ -179,7 +182,7 @@ function colorThemeChanger(){
         body.classList.add('light')
         document.querySelector('.head-container').style.backgroundImage  = "url(./images/bg-header-desktop.png)"
     }
-}
+}    
 
 //storage
 let store = [];
@@ -191,8 +194,7 @@ window.addEventListener('click', (e) => {
     const tagText = e.target.textContent.trim()
 
 
-
-
+    console.log(filterTags)
 
     //push tag to storage, which is filter list
     if(e.target.closest('.job-tag')){
@@ -205,9 +207,8 @@ window.addEventListener('click', (e) => {
             removefilterBox(tagText);
             const storeIndex = store.indexOf(tagText)
             store.splice(storeIndex,1)
-
         }
-   
+    console.log(store)
        
     }
 
@@ -215,7 +216,9 @@ window.addEventListener('click', (e) => {
     if(filterTags){
         removefilterBox((filterTags.childNodes[1]).textContent);
         const storeIndex = store.indexOf(filterTags.childNodes[1].textContent)
-        store.splice(storeIndex,1)
+
+        console.log(storeIndex)
+        store.splice(storeIndex,1 )
     
 
     }
@@ -227,8 +230,9 @@ window.addEventListener('click', (e) => {
         jobListingContainer.style.display = "none";
 
         //convert tags list into readable string arrays
-        const tagArrays = index.textContent.replace(/\s+/g, ',').trim().split(',');
-
+        let tagArrays = index.textContent.replace(/\s+/g, ',').trim().split(',');
+        tagArrays = tagArrays.filter(Boolean).slice(1)
+        
         //store can be found on the first 'if condition' inside eventListener
         if(store.every(each => tagArrays.includes(each))){
             jobListingContainer.classList.add('marked');

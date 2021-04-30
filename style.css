@@ -18,9 +18,7 @@
   --color-headBgImg: #522e47;
   --color-button: #f5ebf4;
 }
-html {
-  font-size: 90%;
-}
+
 html a, html li {
   text-decoration: none;
   list-style: none;
