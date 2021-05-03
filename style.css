@@ -37,7 +37,9 @@ body {
     margin: 0;
     box-sizing: border-box;
 }
-
+html {
+  font-size: 95%;
+}
 p {
   font-size:  1rem;
   font-weight: 700;
@@ -187,12 +189,20 @@ h2{
 }
 /* color swither */
 
-
+header h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    font-family: "Spartan", sans-serif;
+    color: whitesmoke;
+}
 .head-container {
-  padding: 0 16.5rem;
-  max-width: 1440px;
+  max-width: 1600px;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 15.6rem;
   transition: background-color 0.3s ease-in-out;
@@ -204,11 +214,13 @@ h2{
   height: 100%;
   width: 100%;
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 .head-wrapper .color-switch-box {
   position: absolute;
-  right: 3rem;
-  top: 3rem;
+  right: 2rem;
+  top: 1rem;
   cursor: pointer;
   border-radius: 100%;
   -webkit-animation: rotate 10s linear infinite both;
@@ -225,11 +237,11 @@ h2{
   transition: all 0.3s ease;
 }
 .head-wrapper .color-switch-box .color-switcher {
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
   background: url(../images/color-wheel.png) no-repeat center center;
-  background-size: 300%;
+  background-size: 250%;
   box-shadow: 0 0 20px rgba(214, 214, 214, 0.4);
 }
 /* 
@@ -255,8 +267,6 @@ h2{
   justify-content: center;
   align-items: center;
   width: 100%;
- 
- 
 }
 
 .filter-wrapper {
@@ -309,6 +319,7 @@ h2{
   transition: background-color 0.2s ease;
 }
 
+
   /* clear button */
 .filter-clear {
   cursor: pointer;
@@ -334,6 +345,7 @@ h2{
 /* begin trip card */
 
 .lists{
+    display: flex;
     width: 100%;
     max-width: 45rem;
     flex-wrap: wrap;
@@ -345,6 +357,7 @@ h2{
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     max-height:20rem;
+    background-color: #fff;
 }
 
 .container-list{
@@ -361,7 +374,6 @@ h2{
 
 .image-card{
    flex-shrink: 0;
- 
    width: 100%;
    background-position: bottom;
    object-fit: none;
@@ -379,8 +391,8 @@ h2{
 .contents{
   display: flex;
   position: relative;
-  height: 18rem;
-  margin-left: 13rem;
+  height: 19rem;
+  margin-left: 14rem;
   padding-right: 1rem;
 }
 .content {
@@ -414,7 +426,7 @@ h2{
   gap: 4;
   place-self: center;
   align-items: baseline;
-  padding: .5rem .5rem ;
+  padding: 0  1rem;
 
 }
 
@@ -426,7 +438,7 @@ h2{
   border-radius: 10px;
   align-items: center;
   margin-right: 1rem;
-  
+  margin-top: 1.5rem;
 }
 .slide img:first-child{
   height: 18rem;
@@ -482,80 +494,7 @@ h2{
     align-content: flex-start;
 }
 
-
-
-
  
-  
-    /*tabs*/
-  .tabs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: hsl(180, 31%, 95%);
-    margin: 3px 8px;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-  .tabs p {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: rgb(91, 167, 167);
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
-    color: #fff;
-    transition: 0.3s ease background-color;
-  }
-  .tabs p {
-    transform: scale(0.8);
-  }
-  .tabs p {
-    font-size: 11px;
-    padding: 5px;
-    font-weight: 700;
-    color:#fff;
-    margin-top: 3px;
-    letter-spacing: 0.5px;
-  }
-
-  .tabs p:hover {
-    background-color: hsl(180, 14%, 20%);
-  }
-
-
-  .tabs .ion-icon {
-    font-weight: 700;
-  }
- .cancel {
-    height: 1.5px;
-    width: 20px;
-    background-color: #fff;
-    display: flex;
-    transform: rotate(45deg);
-    position: relative;
-    align-items: center;
-    justify-content: center;
-  }
- .cancel::after {
-    content: "";
-    width: 20px;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    position: absolute;
-    transform: rotate(-90deg);
-  }
-  
-
-
-
-
-/* hashtag */
-
 
 .job-tag-box {
   display: flex;

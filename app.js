@@ -49,9 +49,10 @@ searchBar.addEventListener("keyup", e => {
 //fetch data from api
 const loadTrips = async() => {
     try{
-        const res = await fetch("https://trips-api-gateway.herokuapp.com/trips");
+        const res = await fetch('https://trips-api-gateway.herokuapp.com/trips')
         searchTrips = await res.json();
         showTrips(searchTrips);
+        
     }catch(err){
         console.log(err);
     }
@@ -65,13 +66,9 @@ const loadTrips = async() => {
 
 //display data
 const showTrips = (trips) => {
-  
- 
-    let tripListingHTML =  trips.map(trip => {
-
-        return (
+        trips =  trips.map(trip => {
         container.insertAdjacentHTML('beforeend', ` 
-        <div  class="lists" id="lists" id="${trip.eid}> 
+        <div  class="lists" id="${trip.eid}> 
             <div class="container-list">
 
                 <div class="images-slide">
@@ -106,27 +103,22 @@ const showTrips = (trips) => {
                     </div>  
                 </div>     
             </div>
-        </div>`)
-    )}).join('')
-
+        </div>`
+    )})
 };
 
 
 //create tag on filter bar
 const createFilterBox = (tag) => {
-    document.querySelector('.filter-lists').insertAdjacentHTML("beforeend", `
+    document.querySelector('.filter-lists').insertAdjacentHTML('beforeend', `
         <div class="filter-list-box"  data-value="${tag}">
             <div class="filter-tag" >
                 <p >${tag}</p>
             </div>
-            <div class="filter-remove-icon">
+            <div class="filter-remove-icon ">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
-           
-        </div>
-
-    `)
-    
+        </div> `)
 }
 
 
@@ -136,38 +128,31 @@ const createFilterBox = (tag) => {
 
 
 //remove tag from filter bar
-const removefilterBox = (tag) => {
-     document.querySelectorAll('.filter-list-box').forEach(index => {
-         
-         if(index.getAttribute('data-value') == tag) {
-              index.remove();
-         }
-        
-         
-     })
-     console.log(tag)
+const removeFilterBox = (tag) => {
+     document.querySelectorAll('.filter-list-box').forEach(trip => {
+         if(trip.getAttribute('data-value') == tag) trip.remove();
+      
+     })    
 }
 
 
 
 //open and close effect
-function openFilterbox(){
+function openFilterBox(){
     document.querySelector('.filter-wrapper').style.transform= "translateY(-3.5rem) scaleY(1)"
 }
-function closeFilterbox(){
+function closeFilterBox(){
     document.querySelector('.filter-wrapper').style.transform = "translateY(-3.5rem) scaleY(0)"
 }
-
-
 
 
 
 //clear all
 function clearAll(){
     document.querySelectorAll('.lists')
-        .forEach(index => index.classList.remove('marked'));
+        .forEach(trip => trip.classList.remove('marked'));
     document.querySelectorAll('.lists')
-        .forEach(index => index.style.display = 'flex');
+        .forEach(trip => trip.style.display = 'flex');
 }
 
 
@@ -188,51 +173,48 @@ function colorThemeChanger(){
 let store = [];
 
 //job list bar
-window.addEventListener('click', (e) => {
-    const jobTagGroup = document.querySelectorAll('.job-tag-box');
+document.addEventListener('click', (e) => {
+    const jobTagGroup = document.querySelectorAll('.job-tag-box'); //?
     const filterTags = e.target.closest('.filter-list-box');
-    const tagText = e.target.textContent.trim()
+    const tagText = e.target.textContent.trim() 
 
-
-    console.log(filterTags)
+  
 
     //push tag to storage, which is filter list
     if(e.target.closest('.job-tag')){
-        openFilterbox();
+        openFilterBox();
         //if the value to search for is never occurs return -1
-        if(store.indexOf(tagText) == -1){
+        if(store.indexOf(tagText) === -1){
             createFilterBox(tagText)
             store.push(tagText)
         }else{
-            removefilterBox(tagText);
+            removeFilterBox(tagText);
             const storeIndex = store.indexOf(tagText)
             store.splice(storeIndex,1)
         }
-    console.log(store)
-       
+   
+        
     }
 
-    //tag removal forfilter box
+    //tag removal for filter box
     if(filterTags){
-        removefilterBox((filterTags.childNodes[1]).textContent);
+        removeFilterBox((filterTags.childNodes[1]).textContent.replace(/\s+/g," ").trim(''));
         const storeIndex = store.indexOf(filterTags.childNodes[1].textContent)
-
-        console.log(storeIndex)
         store.splice(storeIndex,1 )
-    
-
     }
   
 
-    //joblist display controller
-    jobTagGroup.forEach(index => {
-        const jobListingContainer = index.closest('.lists')
+    //job list display controller
+    jobTagGroup.forEach(trip => {
+        const jobListingContainer = trip.closest('.lists')
         jobListingContainer.style.display = "none";
 
         //convert tags list into readable string arrays
-        let tagArrays = index.textContent.replace(/\s+/g, ',').trim().split(',');
-        tagArrays = tagArrays.filter(Boolean).slice(1)
+        let tagArrays = trip.textContent.replace(/\s+/g, ',').trim().split(',');
+        tagArrays = tagArrays.filter(Boolean).slice(1) //?
         
+       
+
         //store can be found on the first 'if condition' inside eventListener
         if(store.every(each => tagArrays.includes(each))){
             jobListingContainer.classList.add('marked');
@@ -242,7 +224,7 @@ window.addEventListener('click', (e) => {
             jobListingContainer.classList.remove('marked')
         }
   
-    });
+    })
 
 
     //clearAll button on filter bar
@@ -250,7 +232,7 @@ window.addEventListener('click', (e) => {
         const filterLists = document.querySelectorAll('.filter-list-box');
 
         if(e.target.textContent == 'Clear'){
-            filterLists.forEach(index => index.remove());
+            filterLists.forEach(trip => trip.remove());
             store = [];
             clearAll();
         }
@@ -260,7 +242,7 @@ window.addEventListener('click', (e) => {
     //check if filter box is empty
     if(store.length == 0){
         clearAll();
-        closeFilterbox();
+        closeFilterBox();
     }
     
    //color theme changer
@@ -271,13 +253,7 @@ window.addEventListener('click', (e) => {
 
 
 
-
-
-
-
-
-
-loadTrips();
+loadTrips(); 
 
 
 
