@@ -6,44 +6,6 @@ let  searchTrips = [];
 
 
 
-//alternative fetch api to get data 
-/*async function fetchTrip(){
-    const response = await fetch("https://trips-api-gateway.herokuapp.com/trips");
-    const trips = await response.json();
-     showTrips(trips)
-}
-fetchTrip()
-.then(response => {
-    console.log("success")
-})
-.catch(error => {
-    console.log('error');
-    console.log(error);
-})*/
-
-
-
-/*//searchBar filter 
-function searchText(){
-
-searchBar.addEventListener("keyup", e => {
-    const searchString = e.target.value;
-
-    const filteredTrips =  searchTrips.filter(trip => {  
-    return (
-        trip.title.includes(searchString) ||
-        trip.description.includes(searchString)||
-        trip.tags.includes(searchString)
-    );
-    
-});
-    showTrips(filteredTrips);
-   
-})
-}
-
-*/
-
 
 
 //fetch data from api
@@ -56,17 +18,12 @@ const loadTrips = async() => {
     }catch(err){
         console.log(err);
     }
-};
-
-
-
-
-
+}
 
 
 //display data
 const showTrips = (trips) => {
-        trips =  trips.map(trip => {
+        const output =  trips.map(trip => {
         container.insertAdjacentHTML('beforeend', ` 
         <div  class="lists" id="${trip.eid}> 
             <div class="container-list">
@@ -105,6 +62,7 @@ const showTrips = (trips) => {
             </div>
         </div>`
     )})
+   
 };
 
 
@@ -278,35 +236,7 @@ loadTrips();
 
 
 
-/* 1.create tags and append to searchtabs
-function createTaps(item){
-    const tabEl = document.createElement("div");
-    tabEl.classList.add("tabs");
 
-    //create tab 
-    const para = document.createElement("p");
-    para.innerHTML = item;
-    tabEl.appendChild(para);
-
-    //create remove button
-    const button = document.createElement("button");
-    const cancleEl = document.createElement("div");
-    cancleEl.classList.add("cancel");
-    button.appendChild(cancleEl);
-    tabEl.appendChild(button);
-
-    //remove function
-    button.addEventListener("click", (e) => {
-        let text = e.target.closest(".tabs").querySelector("p").textContent;
-        console.log(text)
-        tabEl.remove();
-        return setTripList(ccc(text));
-    })
-  //append tab to searchtag bar
-    return [searchTabs.appendChild(tabEl)];
-}
-
-*/
 
 
 
