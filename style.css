@@ -40,7 +40,7 @@ body {
 }
 
 p {
-  font-size:  14px;
+  font-size:  17px;
   font-weight: 300;
 }
 main {
@@ -79,10 +79,10 @@ main {
    justify-content: center;
    position: relative;
     padding: 0;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     line-height: 30px;
-    font-size: 16px;
+    font-size: 32px;
     background-color: rgba(0,0,0, .2);
     -webkit-border-radius: 64px;
     border-radius: 64px;
@@ -97,10 +97,11 @@ main {
   align-items: center;
   position: relative;
   text-transform: uppercase;
-  padding-right: 5rem;
+  padding-right: 16rem;
 }
 .header-typo p{
   font-size: 32px;
+  font-weight: 600;
 }
 .second-header{
   display: flex;
@@ -111,10 +112,11 @@ main {
 .links{
   justify-content: center;
   display: flex;
-  font-size: 16px;
+  font-size: 22px;
+  text-transform: uppercase;
 }
 .links li{
-   margin: 1rem 0.5rem;
+  margin: 2rem 2.5rem;
 }
 
 .shopping-icon i{
@@ -127,7 +129,8 @@ main {
 .site-header {
    width: 100%;
    display: flex;
-   padding: 3rem;
+   padding: 5rem 3rem;
+   border-top: 1px solid #c5c1c1;
 }
 .roadtrip{
   background-color: #000;
@@ -149,7 +152,7 @@ main {
 }
 .roadtrip p{
  color: #888888;
- font-size: 12px;
+ font-size: 18px;
 }
 .cont{
   display: flex;
@@ -338,8 +341,8 @@ main {
 .contents{
   display: flex;
   position: relative;
-  height: 19rem;
-  margin-left: 15rem;
+  height: 21rem;
+  margin-left: 26rem;
   padding-right: 1rem;
   width: 100%;
 }
@@ -353,8 +356,7 @@ main {
 .title{
     display: flex;
     text-align: left;
-    margin-top: 2rem;
-    font-size: 14px;
+    font-size: 19px;
     width: 100%;
 }
 
@@ -378,8 +380,8 @@ main {
 }
 
 .slide img{
-  height: 5.5rem;
-  width: 7.5rem;
+  height: 6rem;
+  width: auto;
   display: flex;
   position: cover;
   align-items: center;
@@ -387,8 +389,8 @@ main {
   margin-top: 1.5rem;
 }
 .slide img:first-child{
-  height: 19rem;
-  min-width: 26.5rem;
+  height: 100%;
+  min-width: 36rem;
   object-fit: cover;
   background-position: bottom;
 }
@@ -409,7 +411,7 @@ main {
      text-decoration: none;
     list-style: none;
     color: #444;
-    font-size: 14px;
+    font-size: 17px;
   }
   #module #collapseId.collapse:not(.show) {
     display: block;
@@ -424,10 +426,11 @@ main {
   
   #module a.collapsed::after {
     content: 'Read More';
-    font-size: 11px;
+    font-size: 15px;
     background-color: #615c5c;
-    padding: 5px 25px;
+    font-size: 19px;
     color: white;
+    padding: .5rem 2rem;
   }
   
   
@@ -462,7 +465,7 @@ main {
   display: flex;
   flex-direction: row;
   width: 5.5rem;
-  font-size: 14px;
+  font-size: 18px;
 }
 .job-tag-box .job-tag {
   transition: all 0.2s ease;
@@ -483,15 +486,15 @@ main {
    display: flex;
    flex-direction: column;
    align-items: center;
-   width: 22.3%;
-   height: 570px;
+   width: 30.3%;
+   height: 640px;
    margin: 2rem 2.9rem; 
 }
 .sidebar{
    display: flex;
    flex-direction: column;
    width:100%;
-   height: 570px;
+   height: 100%;
    background-color: #000;
 }
 .sidebar h3{
@@ -499,8 +502,8 @@ main {
   font-weight: 300;
 }
 .sidebar img{
-  width: 333px;
-  height: auto;
+  width: 528px;
+  height: 100%;
 }
 .cont-sidebar{
   height: 100%;
@@ -523,26 +526,28 @@ main {
   justify-content: center;
   flex-direction: column;
   padding: 2rem 0;
+  width: 100%;
 }
 
 .circle{
   display: flex;
   width: 100%;
   justify-content: flex-start;
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 .name{
-  font-size: 11px;
+  font-size: 17px;
   color: grey;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 1rem;
+  justify-content: space-evenly;
+  text-transform: uppercase;
+  margin-left: 2rem;
 }
 .profile{
-  width: 60px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: #fff;
   box-shadow: 5px 10px 18px #888888;
@@ -553,8 +558,8 @@ main {
   gap: 9px;
 }
 .grid img{
-  height: 150px;
-  width: 150px;
+  height: 180px;
+  width: 264px;
   object-fit: cover;
 }
 .grid-images button{
