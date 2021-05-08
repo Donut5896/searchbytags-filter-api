@@ -112,8 +112,9 @@ main {
 .links{
   justify-content: center;
   display: flex;
-  font-size: 22px;
+  font-size: 18px;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 .links li{
   margin: 2rem 2.5rem;
@@ -165,14 +166,20 @@ main {
   background-color: #303636;
   color: whitesmoke;
   padding: 0 1rem;
-  font-size: 10px;
   width: 100%;
   border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
  
 }
 .cont button p{
    flex-wrap: nowrap;
    width: 100px;
+   font-size: 16px;
 }
 .icons{
   display: flex;
@@ -367,7 +374,7 @@ main {
     column-span: 2;
 }
 .slide{
-  height: 21rem;
+  height: 22rem;
   width: 100%;
   display: flex;
   position: absolute;
@@ -565,6 +572,7 @@ main {
 .grid-images button{
   background: #000;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   margin: 2rem 0;
+  letter-spacing: 4px;
 }
