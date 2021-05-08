@@ -576,3 +576,17 @@ main {
   margin: 2rem 0;
   letter-spacing: 4px;
 }
+/* quote */
+.quote-card{
+  background-color:  var(--color-darkCyan);
+  height: 410px;
+ 
+}
+.quote{
+  height: 410px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1rem 7rem;
+  color: #fff;
+}
