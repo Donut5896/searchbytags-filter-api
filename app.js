@@ -44,8 +44,11 @@ const showTrips = (trips) => {
                 
                             <div class="description" id="module">
                                 <p class="collapse" id="collapseId" aria-expanded="false">${trip.description}</p>
-                                <a role="button" class="collapsed" data-toggle="collapse" href="${trip.url}" aria-expanded="false"> 
-                                </a>
+                                <button class="readMore-collapsed">
+                                    <a role="button" class="collapsed" data-toggle="collapse" href="${trip.url}" aria-expanded="false">
+                                    Read more 
+                                    </a>
+                                </button>
                             </div>
 
                             <div class="job-tag-box" >

@@ -161,10 +161,12 @@ main {
   justify-content: space-evenly;
   padding: 2rem;
 }
-.cont button{
+
+/* read more button */
+.cont .readMore-btn{
   text-transform: uppercase;
   background-color: #303636;
-  color: whitesmoke;
+  color:  #fff;
   padding: 0 1rem;
   width: 100%;
   border: none;
@@ -174,13 +176,38 @@ main {
   align-content: center;
   flex-wrap: nowrap;
   align-items: center;
- 
+  transition: all 0.5s;
+  cursor: pointer;
 }
-.cont button p{
-   flex-wrap: nowrap;
-   width: 100px;
-   font-size: 16px;
+.readMore-btn p{
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  transition: 0.5s;
+  flex-wrap: nowrap;
+  width: 75%;
+  font-size: 16px;
+  padding: 0 1rem;
+  justify-content: center;
+  align-content: center;
 }
+.readMore-btn p:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.readMore-btn:hover p{
+  padding-right: 25px;
+}
+.readMore-btn:hover p:after{
+  opacity: 1;
+  right: 0;
+}
+
+
 .icons{
   display: flex;
 }
@@ -255,7 +282,7 @@ main {
   align-items: center;
   position: relative;
   cursor: pointer;
-  padding: 0px 0.4rem;
+  padding: 4.5px 0.4rem;
   color: whitesmoke;
 }
 .filter-list-box:hover .filter-remove-icon, .job-tag-box .job-tag:hover .filter-remove-icon {
@@ -310,7 +337,7 @@ main {
     align-items: center;
     height: 90%;
     border-radius: 1rem;
-    margin: 1.5rem;
+    margin: 3.5rem;
     margin-bottom: 2.5rem; 
     position: relative;
     max-height:20rem;
@@ -348,7 +375,7 @@ main {
 .contents{
   display: flex;
   position: relative;
-  height: 21rem;
+  height: 20rem;
   margin-left: 26rem;
   padding-right: 1rem;
   width: 100%;
@@ -374,7 +401,7 @@ main {
     column-span: 2;
 }
 .slide{
-  height: 22rem;
+  height: 24rem;
   width: 100%;
   display: flex;
   position: absolute;
@@ -387,8 +414,8 @@ main {
 }
 
 .slide img{
-  height: 6rem;
-  width: auto;
+  height: 7rem;
+  width: 100%;
   display: flex;
   position: cover;
   align-items: center;
@@ -403,8 +430,7 @@ main {
 }
 
 
-
-/*descriptiotn & read more button */
+/* read more button */
 #module {
     font-size: 14px;
     line-height: 1.7;
@@ -414,35 +440,66 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
   }
-  #module p{
-     text-decoration: none;
-    list-style: none;
-    color: #444;
-    font-size: 17px;
-  }
+
   #module #collapseId.collapse:not(.show) {
     display: block;
     height: 3rem;
-   
     overflow: hidden;
   }
-  
+
   #module #collapseId.collapsing {
     height: 3rem;
   }
-  
-  #module a.collapsed::after {
-    content: 'Read More';
-    font-size: 15px;
-    background-color: #615c5c;
-    font-size: 19px;
-    color: white;
-    padding: .5rem 2rem;
+  .readMore-collapsed{
+    background-color: #303636;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    font-size: 16px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
+  .readMore-collapsed  a.collapsed{
+    text-decoration: none;
+    position: relative;
+   list-style: none;
+   cursor: pointer;
+    transition: 0.5s;
+    color: #fff;
+  }
+  #module a.collapsed:after {
+    position: absolute;
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+  }
+ 
+  #module:hover  a.collapsed{
+    padding-right: 20px;
+  }
+  #module:hover  a.collapsed:after{
+    opacity: 1;
+    right: 0;
+  } 
   
  
-  
+  @keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
 /* hashtags */
 
   #dots {
@@ -475,7 +532,7 @@ main {
   font-size: 18px;
 }
 .job-tag-box .job-tag {
-  transition: all 0.2s ease;
+  animation: bounce 2s ease-in-out infinite;
   width: max-content;
   margin: 0.1rem 0;
 }
@@ -578,15 +635,16 @@ main {
 }
 /* quote */
 .quote-card{
-  background-color:  var(--color-darkCyan);
-  height: 410px;
+  background-color:  #000;
+  height: 500px;
  
 }
 .quote{
-  height: 410px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding: 1rem 7rem;
+  padding: 3rem 7rem;
   color: #fff;
 }
+
