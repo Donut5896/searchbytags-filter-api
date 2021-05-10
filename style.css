@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;0,900;1,200&display=swap');
+
 :root .light {
   --color-darkCyan: #5ba4a4;
   --color-verydarkCyan: #2c3a3a;
@@ -30,7 +33,7 @@ body {
   font-size: 1.5rem;
   background-color: #fff;
   transition: background-color 0.3s ease;
-  font-family: "Spartan", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 *{
@@ -257,16 +260,16 @@ main {
 
 .filter-wrapper {
   transform: translateY(-3.5rem) scaleY(0);
-  width: 86%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 4rem;
+  padding: 2rem 4rem;
   background: white;
   min-height: 50px;
   box-shadow: 0 5px 20px rgb(55 141 128 / 20%);
   transition: transform 0.3s ease-in-out;
-  margin: 0 2rem;
+  margin: 0 6rem;
 }
 
 
@@ -277,13 +280,13 @@ main {
 }
 
 .filter-list-box, .job-tag-box .job-tag {
-  background: #1d1b1b;
+  background: #a09a9a;
   display: flex;
   align-items: center;
   position: relative;
   cursor: pointer;
-  padding: 4.5px 0.4rem;
-  color: whitesmoke;
+  padding: 2px 1rem;
+  color: #fff;
 }
 .filter-list-box:hover .filter-remove-icon, .job-tag-box .job-tag:hover .filter-remove-icon {
   background: var(--color-verydarkCyan);
@@ -337,7 +340,7 @@ main {
     align-items: center;
     height: 90%;
     border-radius: 1rem;
-    margin: 3.5rem;
+    margin: 5rem 1.5rem;
     margin-bottom: 2.5rem; 
     position: relative;
     max-height:20rem;
@@ -374,7 +377,8 @@ main {
 }
 .contents{
   display: flex;
-  position: relative;
+  position: absolute;
+  top: 0;
   height: 20rem;
   margin-left: 26rem;
   padding-right: 1rem;
@@ -400,17 +404,24 @@ main {
     -ms-grid-row-span: 1;
     column-span: 2;
 }
+ .image-content{
+  position: relative;
+  width: 72%;
+   color: rgba(255,255,255,.9);
+} 
+
 .slide{
   height: 24rem;
   width: 100%;
   display: flex;
-  position: absolute;
   grid-row: 1;
-  position: cover;
+  object-fit: cover;
   grid-auto-flow: column;
   gap: 4;
   place-self: center;
   align-items: flex-end;
+  background: rgba(0,0,0,.2);
+  position: relative;
 }
 
 .slide img{
@@ -422,12 +433,66 @@ main {
   margin-right: 3rem;
   margin-top: 1.5rem;
 }
+ .slide:hover .overlay-content {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background-color: rgba(10,10,10,0.36);
+  transition: .2s ease all;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}  
 .slide img:first-child{
   height: 100%;
   min-width: 36rem;
   object-fit: cover;
   background-position: bottom;
+  filter: brightness(90%);
 }
+.overlay-content{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 36rem;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+}
+span.read-more{
+  top: 54%;
+  left: 37%;
+  position: absolute;
+}
+.post-meta{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1rem;
+}
+.meta-views,
+.meta-reading-time,
+.read-more a{
+  color: #fff;
+  font-size: 18px;
+  margin: 1rem;
+}
+.meta-views i,
+.meta-reading-time i{
+  color: #fff;
+}
+
+
 
 
 /* read more button */
@@ -534,10 +599,10 @@ main {
 .job-tag-box .job-tag {
   animation: bounce 2s ease-in-out infinite;
   width: max-content;
-  margin: 0.1rem 0;
+  margin: 0.3rem .5rem;
 }
 .job-tag-box .job-tag:hover {
-  background: var(--color-darkCyan);
+  background:   #3e4141;
 }
 .job-tag-box .job-tag:hover p {
   color: white;
@@ -546,13 +611,20 @@ main {
 
 
 /* side bar section */
+.sidebar-content{
+  display: flex;
+  flex-direction: column;
+  width: 32.5%;
+}
+
 .side-content{
    display: flex;
    flex-direction: column;
    align-items: center;
-   width: 30.3%;
+   width: 84%;
    height: 640px;
    margin: 2rem 2.9rem; 
+   position: relative;
 }
 .sidebar{
    display: flex;
@@ -615,6 +687,10 @@ main {
   border-radius: 50%;
   background-color: #fff;
   box-shadow: 5px 10px 18px #888888;
+  background-image: url(./images/circle.jpg);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
 }
 .grid{
   display: grid;
@@ -648,3 +724,91 @@ main {
   color: #fff;
 }
 
+/* social items box */
+.social-link-items{
+   width: 100%;
+   height: auto;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 2px;
+   position: relative;
+   z-index: 1;
+}
+.social-link{
+  padding: 1.5rem;
+    background-color: #ece1e1;
+}
+.social-link:hover{
+  background-color: rgb(29, 28, 28);
+ 
+}
+.social-link:hover ul li{
+   color: #fff;
+
+}
+.social-link:hover .fa-youtube-play,
+.social-link:hover .fa-soundcloud{
+  color: #fff;
+}
+.social-link ul{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+  align-items: center;
+}
+.sidebar-line{
+  position: relative;
+  width: 100%;
+  margin: 3rem 0;
+}
+.sidebar-line p{
+  width: 100%;
+  background-color: rgb(224 216 216);
+  height: 3px;
+  position: absolute;
+}
+
+ 
+
+/* side bar banner */
+.banner{
+  position: relative;
+  top: 50%;
+}
+div.sticky{
+  position: sticky !important;
+  top: 50%;
+  width: 100%;
+}
+.banner img{
+  width: 100%;
+  height: 50%;
+}
+
+.banner p{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  padding: 5rem 5rem;
+  font-size: 37px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.banner span{
+  position: absolute;
+  color: #fff;
+  font-size: 32px;
+  left: 0;
+  top: 22%;
+  padding: 0 5rem;
+}
+.banner button{
+  width: 40%;
+  height: 45px;
+  background-color: #1f1d1d;
+  color: #fff;
+  border: none;
+  position: absolute;
+  left: 29%;
+  top: 39%;
+}

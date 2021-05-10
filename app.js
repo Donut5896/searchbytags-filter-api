@@ -29,13 +29,29 @@ const showTrips = (trips) => {
             <div class="container-list">
 
                 <div class="images-slide">
-                    <div class="slide">
+                   <div class="image-content">
+                        <div class="slide">
                             ${trip.photos.map(photo => {
-                             return `<img src=${photo} alt="photo"/>
-                            `
-                            }).join('')}
+                            return `<img src=${photo} alt="photo"/>
                                
-                    </div>  
+                            `  }).join('')} 
+                        
+                          <div class="overlay-content">
+                                <span class="read-more"> <a href="${trip.url}" >read more</a></span>
+                                <ul class="post-meta">
+                                    <li class="meta-views">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    "1.7K views"</li>
+                                    <li class="meta-reading-time"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    "2 minute read"</li>
+                                </ul>
+                               
+                           </div>
+                           
+                        </div>    
+                    </div>       
+              
+                  
                     <div class="contents">
                         <div class="content">
                             <div class="title">
@@ -46,7 +62,7 @@ const showTrips = (trips) => {
                                 <p class="collapse" id="collapseId" aria-expanded="false">${trip.description}</p>
                                 <button class="readMore-collapsed">
                                     <a role="button" class="collapsed" data-toggle="collapse" href="${trip.url}" aria-expanded="false">
-                                    Read more 
+                                    read more 
                                     </a>
                                 </button>
                             </div>
@@ -175,9 +191,9 @@ document.addEventListener('click', (e) => {
         tagArrays = tagArrays.filter(Boolean).slice(1) //?
         
        
+        if(store.every(each => tagArrays.includes(each))){
 
         //store can be found on the first 'if condition' inside eventListener
-        if(store.every(each => tagArrays.includes(each))){
             jobListingContainer.classList.add('marked');
             jobListingContainer.style.display = "flex";
             
