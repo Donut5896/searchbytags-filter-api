@@ -116,10 +116,11 @@ const removeFilterBox = (tag) => {
 
 //open and close effect
 function openFilterBox(){
-    document.querySelector('.filter-wrapper').style.transform= "translateY(-3.5rem) scaleY(1)"
+    document.querySelector('.filter-wrapper').style.transform= "translateY(-12.7rem) scaleY(1)"
+    document.querySelector('.filter-wrapper').style.margin = "0 6rem"
 }
 function closeFilterBox(){
-    document.querySelector('.filter-wrapper').style.transform = "translateY(-3.5rem) scaleY(0)"
+    document.querySelector('.filter-wrapper').style.transform = "translateY(-12.7rem) scaleY(0)"
 }
 
 
@@ -133,18 +134,7 @@ function clearAll(){
 }
 
 
-//color theme switch
-function colorThemeChanger(){
-    if(body.classList == 'light'){
-        body.classList.remove('light')
-        body.classList.add('dark')
-        document.querySelector('.head-container').style.backgroundImage  = "url(./images/bg-header-desktop2.png)"
-    } else {
-        body.classList.remove('dark')
-        body.classList.add('light')
-        document.querySelector('.head-container').style.backgroundImage  = "url(./images/bg-header-desktop.png)"
-    }
-}    
+   
 
 //storage
 let store = [];
@@ -222,10 +212,7 @@ document.addEventListener('click', (e) => {
         closeFilterBox();
     }
     
-   //color theme changer
-   if(e.target.classList[0] == 'color-switcher'){        
-    colorThemeChanger();
-    }
+  
 })
 
 
