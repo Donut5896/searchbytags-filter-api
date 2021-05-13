@@ -396,7 +396,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;   
-    padding-left: 13rem;
+    padding-left: 10rem;
 }
 .title{
     display: flex;
